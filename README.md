@@ -1,4 +1,7 @@
-
+作者：汪汪
+链接：https://www.zhihu.com/question/41466747/answer/132562725
+来源：知乎
+著作权归作者所有，转载请联系作者获得授权。
 一、html+css部分、
 （1）css盒模型，可能会要求手写一个布局，这个布局基本上用到的css是margin的负值，boxing-sizing：border-box，布局尽量往这方面想。浏览器布局的基本元素是盒，在w3c的标准模式下，width=width，但是在怪异模式下，width=border*2+padding*2+width;其中后代元素的width：100%；参照的是右边的那个width，
 （2）html5的新特性
