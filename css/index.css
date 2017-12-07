@@ -10,7 +10,7 @@ body, html {
   overflow: hidden;
   position: relative;
   text-align: center;
-  line-height: 600px;
+  padding-top: 250px;
   font-size: 100px;
   font-weight: bolder;
 }
