@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>原型链 · GitBook</title>
+        <title>Passive Event Listeners · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="../nei-cun-xie-lou.html" />
+    <link rel="next" href="../shu-ju-lei-xing.html" />
     
     
-    <link rel="prev" href="shu-zu-qu-zhong.html" />
+    <link rel="prev" href="../yi-dong-duan.html" />
     
 
     </head>
@@ -130,9 +130,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.1.2.1" data-path="../yi-dong-duan/passive-event-listeners.html">
+        <li class="chapter active" data-level="1.1.2.1" data-path="passive-event-listeners.html">
             
-                <a href="../yi-dong-duan/passive-event-listeners.html">
+                <a href="passive-event-listeners.html">
             
                     
                     Passive Event Listeners
@@ -162,9 +162,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.1.3.1" data-path="shu-zu.html">
+        <li class="chapter " data-level="1.1.3.1" data-path="../shu-ju-lei-xing/shu-zu.html">
             
-                <a href="shu-zu.html">
+                <a href="../shu-ju-lei-xing/shu-zu.html">
             
                     
                     数组
@@ -176,9 +176,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.1.3.1.1" data-path="shu-zu/jian-cha-shu-zu-lei-xing.html">
+        <li class="chapter " data-level="1.1.3.1.1" data-path="../shu-ju-lei-xing/shu-zu/jian-cha-shu-zu-lei-xing.html">
             
-                <a href="shu-zu/jian-cha-shu-zu-lei-xing.html">
+                <a href="../shu-ju-lei-xing/shu-zu/jian-cha-shu-zu-lei-xing.html">
             
                     
                     检查数组类型
@@ -194,9 +194,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.1.3.2" data-path="shu-zu-qu-zhong.html">
+        <li class="chapter " data-level="1.1.3.2" data-path="../shu-ju-lei-xing/shu-zu-qu-zhong.html">
             
-                <a href="shu-zu-qu-zhong.html">
+                <a href="../shu-ju-lei-xing/shu-zu-qu-zhong.html">
             
                     
                     数组去重
@@ -207,9 +207,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.1.3.3" data-path="yuan-xing-lian.html">
+        <li class="chapter " data-level="1.1.3.3" data-path="../shu-ju-lei-xing/yuan-xing-lian.html">
             
-                <a href="yuan-xing-lian.html">
+                <a href="../shu-ju-lei-xing/yuan-xing-lian.html">
             
                     
                     原型链
@@ -996,7 +996,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >原型链</a>
+        <a href=".." >Passive Event Listeners</a>
     </h1>
 </div>
 
@@ -1011,19 +1011,12 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="&#x539F;&#x578B;&#x94FE;&#xFF0C;&#x5BF9;&#x8C61;&#xFF0C;&#x6784;&#x9020;&#x51FD;&#x6570;&#xFF0C;&#x7EE7;&#x627F;">&#x539F;&#x578B;&#x94FE;&#xFF0C;&#x5BF9;&#x8C61;&#xFF0C;&#x6784;&#x9020;&#x51FD;&#x6570;&#xFF0C;&#x7EE7;&#x627F;</h2>
-<p><img src="../assets/import1.png" alt=""></p>
-<p>__proto__&#xFF08;&#x9690;&#x5F0F;&#x539F;&#x578B;&#xFF09;&#x4E0E;prototype&#xFF08;&#x663E;&#x5F0F;&#x539F;&#x578B;&#xFF09;</p>
-<p>&#x6BCF;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x5728;&#x521B;&#x5EFA;&#x4E4B;&#x540E;&#x90FD;&#x4F1A;&#x62E5;&#x6709;&#x4E00;&#x4E2A;&#x540D;&#x4E3A;prototype&#x7684;&#x5C5E;&#x6027;&#xFF0C;&#x8FD9;&#x4E2A;&#x5C5E;&#x6027;&#x6307;&#x5411;&#x51FD;&#x6570;&#x7684;&#x539F;&#x578B;&#x5BF9;&#x8C61;</p>
-<p>1.&#x5728;JS&#x91CC;&#xFF0C;&#x4E07;&#x7269;&#x7686;&#x5BF9;&#x8C61;&#x3002;&#x65B9;&#x6CD5;&#xFF08;Function&#xFF09;&#x662F;&#x5BF9;&#x8C61;&#xFF0C;&#x65B9;&#x6CD5;&#x7684;&#x539F;&#x578B;(Function.prototype)&#x662F;&#x5BF9;&#x8C61;&#x3002;&#x56E0;&#x6B64;&#xFF0C;&#x5B83;&#x4EEC;&#x90FD;&#x4F1A;&#x5177;&#x6709;&#x5BF9;&#x8C61;&#x5171;&#x6709;&#x7684;&#x7279;&#x70B9;&#x3002;<br> &#x5373;&#xFF1A;&#x5BF9;&#x8C61;&#x5177;&#x6709;&#x5C5E;&#x6027;__proto__&#xFF0C;&#x53EF;&#x79F0;&#x4E3A;&#x9690;&#x5F0F;&#x539F;&#x578B;&#xFF0C;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;&#x9690;&#x5F0F;&#x539F;&#x578B;&#x6307;&#x5411;&#x6784;&#x9020;&#x8BE5;&#x5BF9;&#x8C61;&#x7684;&#x6784;&#x9020;&#x51FD;&#x6570;&#x7684;&#x539F;&#x578B;&#xFF0C;&#x8FD9;&#x4E5F;&#x4FDD;&#x8BC1;&#x4E86;&#x5B9E;&#x4F8B;&#x80FD;&#x591F;&#x8BBF;&#x95EE;&#x5728;&#x6784;&#x9020;&#x51FD;&#x6570;&#x539F;&#x578B;&#x4E2D;&#x5B9A;&#x4E49;&#x7684;&#x5C5E;&#x6027;&#x548C;&#x65B9;&#x6CD5;&#x3002;</p>
-<p>2.&#x65B9;&#x6CD5;(Function)<br> &#x65B9;&#x6CD5;&#x8FD9;&#x4E2A;&#x7279;&#x6B8A;&#x7684;&#x5BF9;&#x8C61;&#xFF0C;&#x9664;&#x4E86;&#x548C;&#x5176;&#x4ED6;&#x5BF9;&#x8C61;&#x4E00;&#x6837;&#x6709;&#x4E0A;&#x8FF0;_proto_&#x5C5E;&#x6027;&#x4E4B;&#x5916;&#xFF0C;&#x8FD8;&#x6709;&#x81EA;&#x5DF1;&#x7279;&#x6709;&#x7684;&#x5C5E;&#x6027;&#x2014;&#x2014;&#x539F;&#x578B;&#x5C5E;&#x6027;&#xFF08;prototype&#xFF09;&#xFF0C;&#x8FD9;&#x4E2A;&#x5C5E;&#x6027;&#x662F;&#x4E00;&#x4E2A;&#x6307;&#x9488;&#xFF0C;&#x6307;&#x5411;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#xFF0C;&#x8FD9;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;&#x7528;&#x9014;&#x5C31;&#x662F;&#x5305;&#x542B;&#x6240;&#x6709;&#x5B9E;&#x4F8B;&#x5171;&#x4EAB;&#x7684;&#x5C5E;&#x6027;&#x548C;&#x65B9;&#x6CD5;&#xFF08;&#x6211;&#x4EEC;&#x628A;&#x8FD9;&#x4E2A;&#x5BF9;&#x8C61;&#x53EB;&#x505A;&#x539F;&#x578B;&#x5BF9;&#x8C61;&#xFF09;&#x3002;&#x539F;&#x578B;&#x5BF9;&#x8C61;&#x4E5F;&#x6709;&#x4E00;&#x4E2A;&#x5C5E;&#x6027;&#xFF0C;&#x53EB;&#x505A;constructor&#xFF0C;&#x8FD9;&#x4E2A;&#x5C5E;&#x6027;&#x5305;&#x542B;&#x4E86;&#x4E00;&#x4E2A;&#x6307;&#x9488;&#xFF0C;&#x6307;&#x56DE;&#x539F;&#x6784;&#x9020;&#x51FD;&#x6570;&#x3002;</p>
-<p>&#x597D;&#x5566;&#xFF0C;&#x77E5;&#x9053;&#x4E86;&#x8FD9;&#x4E24;&#x4E2A;&#x57FA;&#x672C;&#x70B9;&#xFF0C;&#x6211;&#x4EEC;&#x6765;&#x770B;&#x770B;&#x4E0A;&#x9762;&#x8FD9;&#x526F;&#x56FE;&#x3002;<br> 1.&#x6784;&#x9020;&#x51FD;&#x6570;Foo()<br> &#x6784;&#x9020;&#x51FD;&#x6570;&#x7684;&#x539F;&#x578B;&#x5C5E;&#x6027;Foo.prototype&#x6307;&#x5411;&#x4E86;&#x539F;&#x578B;&#x5BF9;&#x8C61;&#xFF0C;&#x5728;&#x539F;&#x578B;&#x5BF9;&#x8C61;&#x91CC;&#x6709;&#x5171;&#x6709;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x6240;&#x6709;&#x6784;&#x9020;&#x51FD;&#x6570;&#x58F0;&#x660E;&#x7684;&#x5B9E;&#x4F8B;&#xFF08;&#x8FD9;&#x91CC;&#x662F;f1&#xFF0C;f2&#xFF09;&#x90FD;&#x53EF;&#x4EE5;&#x5171;&#x4EAB;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x3002;</p>
-<p>2.&#x539F;&#x578B;&#x5BF9;&#x8C61;Foo.prototype<br> Foo.prototype&#x4FDD;&#x5B58;&#x7740;&#x5B9E;&#x4F8B;&#x5171;&#x4EAB;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x6709;&#x4E00;&#x4E2A;&#x6307;&#x9488;constructor&#x6307;&#x56DE;&#x6784;&#x9020;&#x51FD;&#x6570;&#x3002;</p>
-<p>3.&#x5B9E;&#x4F8B;<br> f1&#x548C;f2&#x662F;Foo&#x8FD9;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;&#x4E24;&#x4E2A;&#x5B9E;&#x4F8B;&#xFF0C;&#x8FD9;&#x4E24;&#x4E2A;&#x5BF9;&#x8C61;&#x4E5F;&#x6709;&#x5C5E;&#x6027;__proto__&#xFF0C;&#x6307;&#x5411;&#x6784;&#x9020;&#x51FD;&#x6570;&#x7684;&#x539F;&#x578B;&#x5BF9;&#x8C61;&#xFF0C;&#x8FD9;&#x6837;&#x5B50;&#x5C31;&#x53EF;&#x4EE5;&#x50CF;&#x4E0A;&#x9762;1&#x6240;&#x8BF4;&#x7684;&#x8BBF;&#x95EE;&#x539F;&#x578B;&#x5BF9;&#x8C61;&#x7684;&#x6240;&#x6709;&#x65B9;&#x6CD5;&#x5566;&#x3002;</p>
-<p>&#x53E6;&#x5916;&#xFF1A;<br> &#x6784;&#x9020;&#x51FD;&#x6570;Foo()&#x9664;&#x4E86;&#x662F;&#x65B9;&#x6CD5;&#xFF0C;&#x4E5F;&#x662F;&#x5BF9;&#x8C61;&#x554A;&#xFF0C;&#x5B83;&#x4E5F;&#x6709;__proto__&#x5C5E;&#x6027;&#xFF0C;&#x6307;&#x5411;&#x8C01;&#x5462;&#xFF1F;<br> &#x6307;&#x5411;&#x5B83;&#x7684;&#x6784;&#x9020;&#x51FD;&#x6570;&#x7684;&#x539F;&#x578B;&#x5BF9;&#x8C61;&#x5457;&#x3002;&#x51FD;&#x6570;&#x7684;&#x6784;&#x9020;&#x51FD;&#x6570;&#x4E0D;&#x5C31;&#x662F;Function&#x561B;&#xFF0C;&#x56E0;&#x6B64;&#x8FD9;&#x91CC;&#x7684;__proto__&#x6307;&#x5411;&#x4E86;Function.prototype&#x3002;<br> &#x5176;&#x5B9E;&#x9664;&#x4E86;Foo()&#xFF0C;Function(), Object()&#x4E5F;&#x662F;&#x4E00;&#x6837;&#x7684;&#x9053;&#x7406;&#x3002;</p>
-<p>&#x539F;&#x578B;&#x5BF9;&#x8C61;&#x4E5F;&#x662F;&#x5BF9;&#x8C61;&#x554A;&#xFF0C;&#x5B83;&#x7684;__proto__&#x5C5E;&#x6027;&#xFF0C;&#x53C8;&#x6307;&#x5411;&#x8C01;&#x5462;&#xFF1F;<br> &#x540C;&#x7406;&#xFF0C;&#x6307;&#x5411;&#x5B83;&#x7684;&#x6784;&#x9020;&#x51FD;&#x6570;&#x7684;&#x539F;&#x578B;&#x5BF9;&#x8C61;&#x5457;&#x3002;&#x8FD9;&#x91CC;&#x662F;Object.prototype.</p>
-<p>&#x6700;&#x540E;&#xFF0C;Object.prototype&#x7684;__proto__&#x5C5E;&#x6027;&#x6307;&#x5411;null&#x3002;</p>
-<p>&#x603B;&#x7ED3;&#xFF1A;<br> 1.&#x5BF9;&#x8C61;&#x6709;&#x5C5E;&#x6027;__proto__,&#x6307;&#x5411;&#x8BE5;&#x5BF9;&#x8C61;&#x7684;&#x6784;&#x9020;&#x51FD;&#x6570;&#x7684;&#x539F;&#x578B;&#x5BF9;&#x8C61;&#x3002;<br> 2.&#x65B9;&#x6CD5;&#x9664;&#x4E86;&#x6709;&#x5C5E;&#x6027;__proto__,&#x8FD8;&#x6709;&#x5C5E;&#x6027;prototype&#xFF0C;prototype&#x6307;&#x5411;&#x8BE5;&#x65B9;&#x6CD5;&#x7684;&#x539F;&#x578B;&#x5BF9;&#x8C61;&#x3002;</p>
+                                <h4 id="passive-event-listeners.E6.98.AF.E4.BB.80.E4.B9.88.EF.BC.9F">Passive Event Listeners&#x662F;&#x4EC0;&#x4E48;&#xFF1F; </h4>
+<p>Passive event listeners are a new feature in the DOM spec that enable developers to opt-in to better scroll performance by eliminating the need for scrolling to block on touch and wheel event listeners. Developers can annotate touch and wheel listeners with {passive: true} to indicate that they will never invoke preventDefault.</p>
+<p>Passive Event Listeners&#x662F;Chrome&#x63D0;&#x51FA;&#x7684;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x6D4F;&#x89C8;&#x5668;&#x7279;&#x6027;&#xFF1A;Web&#x5F00;&#x53D1;&#x8005;&#x901A;&#x8FC7;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x5C5E;&#x6027;passive&#x6765;&#x544A;&#x8BC9;&#x6D4F;&#x89C8;&#x5668;&#xFF0C;&#x5F53;&#x524D;&#x9875;&#x9762;&#x5185;&#x6CE8;&#x518C;&#x7684;&#x4E8B;&#x4EF6;&#x76D1;&#x542C;&#x5668;&#x5185;&#x90E8;&#x662F;&#x5426;&#x4F1A;&#x8C03;&#x7528;preventDefault&#x51FD;&#x6570;&#x6765;&#x963B;&#x6B62;&#x4E8B;&#x4EF6;&#x7684;&#x9ED8;&#x8BA4;&#x884C;&#x4E3A;&#xFF0C;&#x4EE5;&#x4FBF;&#x6D4F;&#x89C8;&#x5668;&#x6839;&#x636E;&#x8FD9;&#x4E2A;&#x4FE1;&#x606F;&#x66F4;&#x597D;&#x5730;&#x505A;&#x51FA;&#x51B3;&#x7B56;&#x6765;&#x4F18;&#x5316;&#x9875;&#x9762;&#x6027;&#x80FD;&#x3002;&#x5F53;&#x5C5E;&#x6027;passive&#x7684;&#x503C;&#x4E3A;true&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4EE3;&#x8868;&#x8BE5;&#x76D1;&#x542C;&#x5668;&#x5185;&#x90E8;&#x4E0D;&#x4F1A;&#x8C03;&#x7528;preventDefault&#x51FD;&#x6570;&#x6765;&#x963B;&#x6B62;&#x9ED8;&#x8BA4;&#x6ED1;&#x52A8;&#x884C;&#x4E3A;&#xFF0C;Chrome&#x6D4F;&#x89C8;&#x5668;&#x79F0;&#x8FD9;&#x7C7B;&#x578B;&#x7684;&#x76D1;&#x542C;&#x5668;&#x4E3A;&#x88AB;&#x52A8;(passive)&#x76D1;&#x542C;&#x5668;&#x3002;&#x76EE;&#x524D;Chrome&#x4E3B;&#x8981;&#x5229;&#x7528;&#x8BE5;&#x7279;&#x6027;&#x6765;&#x4F18;&#x5316;&#x9875;&#x9762;&#x7684;&#x6ED1;&#x52A8;&#x6027;&#x80FD;&#xFF0C;&#x6240;&#x4EE5;Passive Event Listeners&#x7279;&#x6027;&#x5F53;&#x524D;&#x4EC5;&#x652F;&#x6301;mousewheel/touch&#x76F8;&#x5173;&#x4E8B;&#x4EF6;&#x3002;</p>
+<h4 id="&#x4E3A;&#x4EC0;&#x4E48;&#x9700;&#x8981;passive-event-listeners&#x7279;&#x6027;&#xFF1F;">&#x4E3A;&#x4EC0;&#x4E48;&#x9700;&#x8981;Passive Event Listeners&#x7279;&#x6027;&#xFF1F;</h4>
+<p>Passive Event Listeners&#x7279;&#x6027;&#x662F;&#x4E3A;&#x4E86;&#x63D0;&#x9AD8;&#x9875;&#x9762;&#x7684;&#x6ED1;&#x52A8;&#x6D41;&#x7545;&#x5EA6;&#x800C;&#x8BBE;&#x8BA1;&#x7684;&#xFF0C;&#x9875;&#x9762;&#x6ED1;&#x52A8;&#x6D41;&#x7545;&#x5EA6;&#x7684;&#x63D0;&#x5347;&#xFF0C;&#x76F4;&#x63A5;&#x5F71;&#x54CD;&#x5230;&#x7528;&#x6237;&#x5BF9;&#x8FD9;&#x4E2A;&#x9875;&#x9762;&#x6700;&#x76F4;&#x89C2;&#x7684;&#x611F;&#x53D7;&#x3002;&#x8FD9;&#x4E2A;&#x4E0D;&#x96BE;&#x7406;&#x89E3;&#xFF0C;&#x60F3;&#x8C61;&#x4E00;&#x4E0B;&#x4F60;&#x60F3;&#x8981;&#x6ED1;&#x52A8;&#x67D0;&#x4E2A;&#x9875;&#x9762;&#x6D4F;&#x89C8;&#x5185;&#x5BB9;&#xFF0C;&#x5F53;&#x4F60;&#x7528;&#x9F20;&#x6807;&#x6EDA;&#x8F6E;&#x6216;&#x8005;&#x7528;&#x624B;&#x6307;&#x89E6;&#x6478;&#x5C4F;&#x5E55;&#x4E0A;&#x4E0B;&#x6ED1;&#x52A8;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x9875;&#x9762;&#x5E76;&#x6CA1;&#x6709;&#x6309;&#x4F60;&#x7684;&#x9884;&#x671F;&#x8FDB;&#x884C;&#x6EDA;&#x52A8;&#xFF0C;&#x6B64;&#x65F6;&#x4F60;&#x5185;&#x5FC3;&#x5F80;&#x5F80;&#x4F1A;&#x611F;&#x89C9;&#x5230;&#x4E00;&#x4E1D;&#x4E0D;&#x723D;&#xFF0C;&#x751A;&#x81F3;&#x60F3;&#x653E;&#x5F03;&#x8BE5;&#x9875;&#x9762;&#x3002;Facebook&#x4E4B;&#x524D;&#x505A;&#x4E86;&#x4E00;&#x9879;&#x8BD5;&#x9A8C;&#xFF0C;&#x4ED6;&#x4EEC;&#x5C06;&#x9875;&#x9762;&#x6ED1;&#x52A8;&#x7684;&#x54CD;&#x5E94;&#x5237;&#x65B0;&#x7387;&#x4ECE;60FPS&#x964D;&#x4F4E;&#x5230;30FPS&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x53D1;&#x73B0;&#x7528;&#x6237;&#x7684;&#x53C2;&#x4E0E;&#x5EA6;&#x6025;&#x901F;&#x4E0B;&#x964D;&#x3002;</p>
+<p>&#x7531;&#x524D;&#x9762;&#x5BF9;Passive Event Listeners&#x7279;&#x6027;&#x7684;&#x4ECB;&#x7ECD;&#x53EF;&#x77E5;&#xFF0C;Passive Event Listenrers&#x7279;&#x6027;&#x662F;&#x8BA9;Web&#x5F00;&#x53D1;&#x8005;&#x6765;&#x544A;&#x8BC9;&#x6D4F;&#x89C8;&#x5668;&#xFF0C;&#x5F53;&#x524D;&#x9875;&#x9762;&#x5185;&#x6CE8;&#x518C;&#x7684;mousewheel/touch&#x4E8B;&#x4EF6;&#x76D1;&#x542C;&#x5668;&#x662F;&#x5426;&#x5C5E;&#x4E8E;&#x88AB;&#x52A8;&#x76D1;&#x542C;&#x5668;&#xFF0C;&#x4EE5;&#x4FBF;&#x8BA9;&#x6D4F;&#x89C8;&#x5668;&#x66F4;&#x597D;&#x5730;&#x505A;&#x51B3;&#x7B56;&#x6765;&#x63D0;&#x9AD8;&#x9875;&#x9762;&#x7684;&#x6ED1;&#x52A8;&#x6D41;&#x7545;&#x5EA6;&#x3002;&#x90A3;&#x4E48;Chrome&#x6D4F;&#x89C8;&#x5668;&#x4E3A;&#x4EC0;&#x4E48;&#x9700;&#x8981;&#x77E5;&#x9053;&#x662F;&#x5426;&#x88AB;&#x52A8;&#x76D1;&#x542C;&#x5668;&#x8FD9;&#x4E2A;&#x4FE1;&#x606F;&#x5462;&#xFF1F;&#x6D4F;&#x89C8;&#x5668;&#x77E5;&#x9053;&#x8FD9;&#x4E2A;&#x4FE1;&#x606F;&#x4E4B;&#x540E;&#xFF0C;&#x5B83;&#x8981;&#x505A;&#x4EC0;&#x4E48;&#x51B3;&#x7B56;&#x5462;&#xFF1F;&#x8981;&#x56DE;&#x7B54;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;&#x6709;&#x5FC5;&#x8981;&#x5148;&#x4E86;&#x89E3;&#x4E00;&#x4E0B;&#x76EE;&#x524D;Chrome&#x6D4F;&#x89C8;&#x5668;&#x7684;&#x7EBF;&#x7A0B;&#x5316;&#x6E32;&#x67D3;&#x6846;&#x67B6;&#xFF0C;&#x5B83;&#x662F;Passive Event Listeners&#x7279;&#x6027;&#x7684;&#x57FA;&#x7840;&#x3002;</p>
 
                                 
                                 </section>
@@ -1051,12 +1044,12 @@
 
             
                 
-                <a href="shu-zu-qu-zhong.html" class="navigation navigation-prev " aria-label="Previous page: 数组去重">
+                <a href="../yi-dong-duan.html" class="navigation navigation-prev " aria-label="Previous page: 移动端">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="../nei-cun-xie-lou.html" class="navigation navigation-next " aria-label="Next page: 内存泄漏">
+                <a href="../shu-ju-lei-xing.html" class="navigation navigation-next " aria-label="Next page: 数据类型">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1067,7 +1060,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"原型链","level":"1.1.3.3","depth":3,"next":{"title":"内存泄漏","level":"1.1.4","depth":2,"path":"nei-cun-xie-lou.md","ref":"nei-cun-xie-lou.md","articles":[]},"previous":{"title":"数组去重","level":"1.1.3.2","depth":3,"path":"shu-ju-lei-xing/shu-zu-qu-zhong.md","ref":"shu-ju-lei-xing/shu-zu-qu-zhong.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"shu-ju-lei-xing/yuan-xing-lian.md","mtime":"2018-03-28T03:52:15.716Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-05-24T02:24:13.118Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Passive Event Listeners","level":"1.1.2.1","depth":3,"next":{"title":"数据类型","level":"1.1.3","depth":2,"path":"shu-ju-lei-xing.md","ref":"shu-ju-lei-xing.md","articles":[{"title":"数组","level":"1.1.3.1","depth":3,"path":"shu-ju-lei-xing/shu-zu.md","ref":"shu-ju-lei-xing/shu-zu.md","articles":[{"title":"检查数组类型","level":"1.1.3.1.1","depth":4,"path":"shu-ju-lei-xing/shu-zu/jian-cha-shu-zu-lei-xing.md","ref":"shu-ju-lei-xing/shu-zu/jian-cha-shu-zu-lei-xing.md","articles":[]}]},{"title":"数组去重","level":"1.1.3.2","depth":3,"path":"shu-ju-lei-xing/shu-zu-qu-zhong.md","ref":"shu-ju-lei-xing/shu-zu-qu-zhong.md","articles":[]},{"title":"原型链","level":"1.1.3.3","depth":3,"path":"shu-ju-lei-xing/yuan-xing-lian.md","ref":"shu-ju-lei-xing/yuan-xing-lian.md","articles":[]}]},"previous":{"title":"移动端","level":"1.1.2","depth":2,"path":"yi-dong-duan.md","ref":"yi-dong-duan.md","articles":[{"title":"Passive Event Listeners","level":"1.1.2.1","depth":3,"path":"yi-dong-duan/passive-event-listeners.md","ref":"yi-dong-duan/passive-event-listeners.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"yi-dong-duan/passive-event-listeners.md","mtime":"2018-05-03T08:59:07.855Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-05-24T02:24:13.118Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>xss/csrf · GitBook</title>
+        <title>网页通过php链接数据库查询数据 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="yu-ming-fa-san-yu-yu-ming-shou-lian.html" />
+    <link rel="next" href="chuang-zuo.html" />
     
     
-    <link rel="prev" href="200304ff0c-huan-cun.html" />
+    <link rel="prev" href="shou-quan-dan-chuang-zi-dong-guan-bi-fu-ye-mian-shua-xin-si-lu.html" />
     
 
     </head>
@@ -653,7 +653,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.1.10.5" data-path="xsscsrf.html">
+        <li class="chapter " data-level="1.1.10.5" data-path="xsscsrf.html">
             
                 <a href="xsscsrf.html">
             
@@ -916,7 +916,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.8" data-path="wang-ye-tong-guo-php-lian-jie-shu-ju-ku-cha-xun-shu-ju.html">
+        <li class="chapter active" data-level="1.2.8" data-path="wang-ye-tong-guo-php-lian-jie-shu-ju-ku-cha-xun-shu-ju.html">
             
                 <a href="wang-ye-tong-guo-php-lian-jie-shu-ju-ku-cha-xun-shu-ju.html">
             
@@ -996,7 +996,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >xss/csrf</a>
+        <a href="." >网页通过php链接数据库查询数据</a>
     </h1>
 </div>
 
@@ -1011,10 +1011,53 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <p>XSS&#x8DE8;&#x7AD9;&#x811A;&#x672C;&#x653B;&#x51FB; &#x5B58;&#x50A8;&#x578B;&#xFF0C;&#x50A8;&#x5B58;&#x5728;&#x670D;&#x52A1;&#x5668;&#x53CD;&#x5C04;&#x578B;&#xFF0C;&#x9700;&#x8981;&#x7528;&#x6237;&#x70B9;&#x51FB;&#x89E6;&#x53D1;</p>
-<p>CSRF&#xFF08;cross-site request forgery&#xFF09;&#xFF0C;&#x7FFB;&#x8BD1;&#x4E3A;&#x8DE8;&#x7AD9;&#x8BF7;&#x6C42;&#x4F2A;&#x9020;&#xFF0C;&#x4E0E;XSS&#x975E;&#x5E38;&#x76F8;&#x4F3C;&#xFF0C;&#x4F46;XSS&#x662F;&#x5229;&#x7528;&#x7528;&#x6237;&#x5BF9;&#x5F53;&#x524D;&#x7F51;&#x7AD9;&#x7684;&#x4FE1;&#x4EFB;&#x6765;&#x53D1;&#x8D77;&#x653B;&#x51FB;&#xFF0C;&#x800C;CSRF&#x662F;&#x5229;&#x7528;&#x7F51;&#x7AD9;&#x5BF9;&#x7528;&#x6237;&#x7684;&#x4FE1;&#x4EFB;&#x6765;&#x53D1;&#x8D77;&#x653B;&#x51FB;&#x3002;</p>
-<p>sql&#x6CE8;&#x5165; &#x628A;SQL&#x547D;&#x4EE4;&#x63D2;&#x5165;&#x5230;Web&#x8868;&#x5355;&#x9012;&#x4EA4;&#x6216;&#x8F93;&#x5165;&#x57DF;&#x540D;&#x6216;&#x9875;&#x9762;&#x8BF7;&#x6C42;&#x7684;&#x67E5;&#x8BE2;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x6700;&#x7EC8;&#x8FBE;&#x5230;&#x6B3A;&#x9A97;&#x670D;&#x52A1;&#x5668;&#x6267;&#x884C;&#x6076;&#x610F;&#x7684;SQL&#x547D;&#x4EE4;&#x3002;</p>
+                                <pre><code>&lt;?php
+//php&#x63A5;&#x53E3;&#x7684;&#x5199;&#x6CD5;&#xFF0C;php&#x8BBF;&#x95EE;mysql&#x6570;&#x636E;&#x5E93;&#x7684;&#x57FA;&#x672C;&#x6B65;&#x9AA4;,&#x83B7;&#x53D6;&#x7528;&#x6237;
 
+//1 &#x8FDE;&#x63A5;&#x6570;&#x636E;&#x5E93;&#x670D;&#x52A1;&#x5668;&#xFF1A;  mysql_connect(&quot;&#x670D;&#x52A1;&#x5668;&#x540D;&#x79F0;&quot;,&quot;&#x7528;&#x6237;&#x540D;&quot;,&quot;&#x5BC6;&#x7801;&quot;);or die(&quot;&#x524D;&#x9762;&#x8BED;&#x53E5;&#x6267;&#x884C;&#x4E0D;&#x6210;&#x529F;&#x540E;&#x8FD4;&#x56DE;&#x7684;&#x4FE1;&#x606F;&quot;.mysql_error());
+//.mysql_error() &#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x7684;&#x610F;&#x601D;&#x662F;&#x4EC0;&#x4E48;&#x539F;&#x56E0;&#x5BFC;&#x81F4;&#x524D;&#x9762;&#x7684;sql&#x8BED;&#x53E5;&#x6267;&#x884C;&#x5931;&#x8D25;
+
+$conn = mysql_connect(&quot;localhost&quot;,&quot;root&quot;,&quot;root&quot;) or die(&quot;connect fieled!&quot;.mysql_error());
+
+//&#x9632;&#x6B62;&#x4E2D;&#x6587;&#x4E71;&#x7801;
+mysql_query(&quot;SET NAMES UTF8&quot;);
+
+//2 &#x9009;&#x62E9;&#x6570;&#x636E;&#x5E93;&#xFF1A; mysql_select_db(&quot;&#x6570;&#x636E;&#x5E93;&#x7684;&#x540D;&#x79F0;[&#x53EF;&#x9009;&#x7684;&#x8D44;&#x6E90;&#x53F7;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x7B2C;&#x4E00;&#x6B65;&#x7684;&#x53D8;&#x91CF;&#x540D; $conn]&quot;),&#x8FD4;&#x56DE;&#x503C;&#x4E3A;true / false
+
+$select = mysql_select_db(&quot;test&quot;,$conn) or die(&quot;select db failed!&quot;.mysql_errno());
+
+//3 &#x6267;&#x884C;sql&#x8BED;&#x53E5;&#xFF1A;mysql_query &#x53EF;&#x4EE5;&#x5728;php&#x4E2D;&#x6267;&#x884C;sql&#x8BED;&#x53E5;&#xFF0C;&#x5148;&#x5728;&#x6570;&#x636E;&#x5E93;&#x4E2D;&#x6267;&#x884C;&#x8FD9;&#x4E2A;&#x8BED;&#x53E5;&#xFF0C;&#x770B;&#x662F;&#x5426;&#x80FD;&#x67E5;&#x51FA;&#x6570;&#x636E;&#x6765;
+
+$sql = &quot;select * from t_user&quot;; //&#x4ECE;&#x8868;t_user&#x4E2D;&#x9009;&#x62E9;
+$result = mysql_query($sql);
+
+//4 &#x83B7;&#x53D6;&#x6267;&#x884C;&#x7ED3;&#x679C;&#xFF1A; mysql_fetch_array(),&#x4F1A;&#x8FD4;&#x56DE;&#x591A;&#x884C;&#xFF0C;&#x56E0;&#x6B64;&#x8981;&#x4F7F;&#x7528;while&#x5FAA;&#x73AF;&#xFF0C;&#x628A;&#x8FD4;&#x56DE;&#x7684;$result&#x8FD9;&#x4E2A;&#x6570;&#x7EC4;&#xFF0C;&#x6309;&#x6BCF;&#x6B21;&#x8BFB;&#x4E00;&#x884C;&#x663E;&#x793A;
+$array = array(); //&#x81EA;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x6570;&#x7EC4;&#xFF0C;&#x5B58;&#x653E;&#x6570;&#x636E;
+$i = 0; //&#x521D;&#x59CB;&#x6570;&#x636E;&#x4E3A; 0
+while ($row = mysql_fetch_array($result)){
+    //&#x4ECE;&#x8FD4;&#x56DE;&#x5230;$row&#x4E2D;&#x6240;&#x6709;&#x7684;&#x6570;&#x636E;&#x4E2D;&#x53D6;&#x51FA;&#x9700;&#x8981;&#x7684;&#x5B57;&#x6BB5;&#xFF0C;&#x5E76;&#x628A;&#x5B83;&#x50A8;&#x5B58;&#x5728;&#x6570;&#x7EC4;$array&#x4E2D;
+    $array[$i][&quot;user_id&quot;] = $row[&quot;user_id&quot;];
+    $array[$i][&quot;user_phone&quot;] = $row[&quot;user_phone&quot;];
+    $array[$i][&quot;user_name&quot;] = $row[&quot;user_name&quot;];
+    //&#x6240;&#x6709;&#x7684;&#x6570;&#x636E;&#x90FD;&#x7D2F;&#x52A0;&#x663E;&#x793A;
+    $i ++;
+}
+
+//5 &#x5173;&#x95ED;&#x6570;&#x636E;&#x5E93;&#x8FDE;&#x63A5;&#xFF1A;mysql_close(&#x8FDE;&#x63A5;&#x5230;&#x6570;&#x636E;&#x5E93;&#x7684;&#x53D8;&#x91CF;)
+mysql_close($conn);
+
+//6 &#x5C06;&#x7ED3;&#x679C;&#x8F6C;&#x6362;&#x4E3A;JSON&#x8F93;&#x51FA;&#x5230;&#x5BA2;&#x6237;&#x7AEF;
+$json = json_encode(
+    //array()&#x662F;&#x7EC4;&#x7EC7;&#x8981;&#x663E;&#x793A;&#x7684;&#x6570;&#x636E;&#x7ED3;&#x6784;
+    array(
+        &quot;resultCode&quot;=&gt;200,
+        &quot;message&quot;=&gt;&quot;success&quot;,
+        &quot;data&quot;=&gt;$array
+    )
+); //&#x8F6C;&#x6362;&#x4E3A;JSON
+echo ($json); //&#x663E;&#x793A;&#x5728;&#x5BA2;&#x6237;&#x7AEF;
+?&gt;
+</code></pre>
                                 
                                 </section>
                             
@@ -1041,12 +1084,12 @@
 
             
                 
-                <a href="200304ff0c-huan-cun.html" class="navigation navigation-prev " aria-label="Previous page: 200,304，缓存">
+                <a href="shou-quan-dan-chuang-zi-dong-guan-bi-fu-ye-mian-shua-xin-si-lu.html" class="navigation navigation-prev " aria-label="Previous page: 授权弹窗自动关闭父页面刷新思路">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="yu-ming-fa-san-yu-yu-ming-shou-lian.html" class="navigation navigation-next " aria-label="Next page: 域名发散与域名收敛">
+                <a href="chuang-zuo.html" class="navigation navigation-next " aria-label="Next page: 创作">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1057,7 +1100,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"xss/csrf","level":"1.1.10.5","depth":3,"next":{"title":"域名发散与域名收敛","level":"1.1.10.6","depth":3,"path":"yu-ming-fa-san-yu-yu-ming-shou-lian.md","ref":"yu-ming-fa-san-yu-yu-ming-shou-lian.md","articles":[]},"previous":{"title":"200,304，缓存","level":"1.1.10.4","depth":3,"path":"200304ff0c-huan-cun.md","ref":"200304ff0c-huan-cun.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"xsscsrf.md","mtime":"2018-03-28T08:46:01.685Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-05-24T02:24:13.118Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"网页通过php链接数据库查询数据","level":"1.2.8","depth":2,"next":{"title":"创作","level":"1.3","depth":1,"path":"chuang-zuo.md","ref":"chuang-zuo.md","articles":[{"title":"vue element-ui tree 树形控件改iview","level":"1.3.1","depth":2,"path":"chuang-zuo/vue-element-ui-tree-shu-xing-kong-jian-gai-iview.md","ref":"chuang-zuo/vue-element-ui-tree-shu-xing-kong-jian-gai-iview.md","articles":[]}]},"previous":{"title":"授权弹窗自动关闭父页面刷新思路","level":"1.2.7","depth":2,"path":"shou-quan-dan-chuang-zi-dong-guan-bi-fu-ye-mian-shua-xin-si-lu.md","ref":"shou-quan-dan-chuang-zi-dong-guan-bi-fu-ye-mian-shua-xin-si-lu.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"wang-ye-tong-guo-php-lian-jie-shu-ju-ku-cha-xun-shu-ju.md","mtime":"2018-05-03T08:59:07.853Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-05-24T02:24:13.118Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

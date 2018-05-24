@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>xss/csrf · GitBook</title>
+        <title>Twitter，facebook，Pinterest等国外平台授权登录 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="yu-ming-fa-san-yu-yu-ming-shou-lian.html" />
+    <link rel="next" href="vscodezhi-chi-es2016-es2017-yu-fa.html" />
     
     
-    <link rel="prev" href="200304ff0c-huan-cun.html" />
+    <link rel="prev" href="wen-zhang/canvastu-pian-he-cheng.html" />
     
 
     </head>
@@ -653,7 +653,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.1.10.5" data-path="xsscsrf.html">
+        <li class="chapter " data-level="1.1.10.5" data-path="xsscsrf.html">
             
                 <a href="xsscsrf.html">
             
@@ -851,7 +851,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.3" data-path="twitterfacebookpinterestdeng-guo-wai-ping-tai-shou-quan-deng-lu.html">
+        <li class="chapter active" data-level="1.2.3" data-path="twitterfacebookpinterestdeng-guo-wai-ping-tai-shou-quan-deng-lu.html">
             
                 <a href="twitterfacebookpinterestdeng-guo-wai-ping-tai-shou-quan-deng-lu.html">
             
@@ -996,7 +996,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >xss/csrf</a>
+        <a href="." >Twitter，facebook，Pinterest等国外平台授权登录</a>
     </h1>
 </div>
 
@@ -1011,10 +1011,77 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <p>XSS&#x8DE8;&#x7AD9;&#x811A;&#x672C;&#x653B;&#x51FB; &#x5B58;&#x50A8;&#x578B;&#xFF0C;&#x50A8;&#x5B58;&#x5728;&#x670D;&#x52A1;&#x5668;&#x53CD;&#x5C04;&#x578B;&#xFF0C;&#x9700;&#x8981;&#x7528;&#x6237;&#x70B9;&#x51FB;&#x89E6;&#x53D1;</p>
-<p>CSRF&#xFF08;cross-site request forgery&#xFF09;&#xFF0C;&#x7FFB;&#x8BD1;&#x4E3A;&#x8DE8;&#x7AD9;&#x8BF7;&#x6C42;&#x4F2A;&#x9020;&#xFF0C;&#x4E0E;XSS&#x975E;&#x5E38;&#x76F8;&#x4F3C;&#xFF0C;&#x4F46;XSS&#x662F;&#x5229;&#x7528;&#x7528;&#x6237;&#x5BF9;&#x5F53;&#x524D;&#x7F51;&#x7AD9;&#x7684;&#x4FE1;&#x4EFB;&#x6765;&#x53D1;&#x8D77;&#x653B;&#x51FB;&#xFF0C;&#x800C;CSRF&#x662F;&#x5229;&#x7528;&#x7F51;&#x7AD9;&#x5BF9;&#x7528;&#x6237;&#x7684;&#x4FE1;&#x4EFB;&#x6765;&#x53D1;&#x8D77;&#x653B;&#x51FB;&#x3002;</p>
-<p>sql&#x6CE8;&#x5165; &#x628A;SQL&#x547D;&#x4EE4;&#x63D2;&#x5165;&#x5230;Web&#x8868;&#x5355;&#x9012;&#x4EA4;&#x6216;&#x8F93;&#x5165;&#x57DF;&#x540D;&#x6216;&#x9875;&#x9762;&#x8BF7;&#x6C42;&#x7684;&#x67E5;&#x8BE2;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x6700;&#x7EC8;&#x8FBE;&#x5230;&#x6B3A;&#x9A97;&#x670D;&#x52A1;&#x5668;&#x6267;&#x884C;&#x6076;&#x610F;&#x7684;SQL&#x547D;&#x4EE4;&#x3002;</p>
+                                <pre><code>&#x9996;&#x5148;Facebook&#xFF1A;
 
+1).&#x5728;Facebook&#x5F00;&#x53D1;&#x8005;&#x5E73;&#x53F0;&#x6CE8;&#x518C;&#x81EA;&#x5DF1;&#x7684;application&#xFF1B;&#x7136;&#x540E;&#x5F97;&#x5230;appid&#x548C;&#x5E94;&#x7528;&#x5BC6;&#x94A5;&#xFF1B;
+
+2).&#x63A5;&#x4E0B;&#x6765;&#x5C31;&#x5F02;&#x6B65;&#x5F15;&#x7528;Facebook&#x7684;sdk.js&#x5E76;&#x8C03;&#x7528;&#x521D;&#x59CB;&#x5316;&#x65B9;&#x6CD5;&#xFF1B;
+
+window.fbAsyncInit = function() {
+      FB.init({
+        appId            : appId,
+        autoLogAppEvents : true,
+        xfbml            : true,
+        version          : &apos;v2.10&apos;
+      });
+      FB.AppEvents.logPageView();
+    };
+
+    (function(d, s, id){
+       var js, fjs = d.getElementsByTagName(s)[0];
+       if (d.getElementById(id)) {return;}
+       js = d.createElement(s); js.id = id;
+       js.src = &quot;//connect.facebook.net/en_US/sdk.js&quot;;
+       fjs.parentNode.insertBefore(js, fjs);
+     }(document, &apos;script&apos;, &apos;facebook-jssdk&apos;));
+
+&#x8C03;&#x7528;
+FB.login(function (response) {
+      //&#x56DE;&#x8C03;
+  }, { scope: &apos;manage_pages,email,pages_manage_cta,publish_actions,publish_pages,read_page_mailboxes&apos; });
+
+&#x81F3;&#x6B64;&#xFF1B;Facebook&#x7B2C;&#x4E09;&#x65B9;&#x767B;&#x5F55;&#x524D;&#x7AEF;&#x5C31;&#x5B8C;&#x6210;&#x4E86;&#xFF01;
+
+Twitter&#xFF1B;
+
+1).&#x5230;Twitter&#x5F00;&#x53D1;&#x8005;&#x5E73;&#x53F0;&#x6CE8;&#x518C;&#x81EA;&#x5DF1;&#x7684;&#x5E94;&#x7528;&#xFF1B;&#x6CE8;&#x518C;&#x6210;&#x529F;&#x4F1A;&#x5F97;&#x5230;appkey&#x548C;API Secret&#x3002;(&#x5728;https://apps.twitter.com/&#x4E0A;&#x6CE8;&#x518C;&#x81EA;&#x5DF1;&#x7684;app/web)
+
+2).&#x5728;https://auth-server.herokuapp.com/&#x767B;&#x5F55;&#x81EA;&#x5DF1;&#x7684;Twitter&#x8D26;&#x53F7;&#xFF1B;&#x7136;&#x540E;&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;&#x9879;&#x76EE;&#x628A;&#x5728;Twitter&#x5F00;&#x53D1;&#x8005;&#x5E73;&#x53F0;&#x6CE8;&#x518C;&#x5F97;&#x5230;&#x7684;appkey&#x548C;API Secret&#x8BBE;&#x7F6E;&#x5230;&#x8FD9;&#x4E2A;&#x9879;&#x76EE;&#x4E2D;&#xFF0C;&#x6CE8;&#x610F;&#x4E00;&#x4E2A;appkey&#x548C;API Secret&#x53EA;&#x80FD;&#x8BBE;&#x7F6E;&#x4E00;&#x4E2A;&#x57DF;&#x540D;&#xFF0C;reference&#x63CF;&#x8FF0;(&#x4E3E;&#x4E2A;&#x4F8B;&#x5B50;&#x5982;&#x4F60;&#x7684;&#x9879;&#x76EE;&#x53EB;&#x767E;&#x5EA6;&#xFF0C;&#x90A3;&#x5C31;&#x5199;&#x4E2A;&#x767E;&#x5EA6;)&#xFF0C;domain&#x5C31;&#x662F;&#x9879;&#x76EE;&#x57DF;&#x540D;(&#x4E3B;&#x57DF;&#x540D;)&#xFF1B;grant_url&#x53EF;&#x4E0D;&#x586B;&#xFF0C;&#x6211;&#x662F;&#x586B;&#x4E86;&#x7684;(https://api.twitter.com/oauth/access_token)&#x3002;(Twitter&#x767B;&#x5F55;&#x6846;&#x95EA;&#x9000;&#x3002;&#x5982;&#x679C;&#x6CA1;&#x5728;&#x8FD9;&#x4E2A;&#x7F51;&#x5740;&#x6CE8;&#x518C;&#x4F60;&#x7684;&#x9879;&#x76EE;&#x7684;&#x8BDD;&#x4F1A;&#x6709;&#x70B9;&#x51FB;Twitter&#x95EA;&#x9000;&#x7684;&#x73B0;&#x8C61;&#xFF0C;&#x8BF7;&#x52A1;&#x5FC5;&#x914D;&#x7F6E;)
+
+&#x53E6;&#x5916;&#xFF1A;&#x8FD8;&#x6709;&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#x4F1A;&#x5BFC;&#x81F4;&#x95EA;&#x9000;&#xFF0C;&#x90A3;&#x5C31;&#x662F;&#x5728;https://apps.twitter.com&#x6CE8;&#x518C;&#x81EA;&#x5DF1;&#x7684;app&#x7684;&#x65F6;&#x5019;&#x4E00;&#x5B9A;&#x8981;&#x628A;Callback URL&#x586B;&#x4E0A;&#x3002;&#x4E0D;&#x7136;&#x4E5F;&#x4F1A;&#x51FA;&#x73B0;&#x95EA;&#x9000;&#x3002;Callback URL&#x586B;&#x7684;&#x8DDF;&#x4E00;&#x7EA7;&#x57DF;&#x540D;&#x4E00;&#x6837;
+
+&#x5728;&#x9875;&#x9762;&#x5F15;&#x5165;Twitter&#x6240;&#x9700;&#x7684;js&#x3002;
+&#x6CE8;&#x610F;&#x7684;&#x662F;&#x8981;&#x5F15;&#x5165; http://adodson.com/hello.js/dist/hello.all.js
+
+
+ window.twttr = (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0],
+       t = window.twttr || {};
+       if (d.getElementById(id)) return t;
+       js = d.createElement(s);
+       js.id = id;
+       js.src = &quot;https://platform.twitter.com/widgets.js&quot;;
+       fjs.parentNode.insertBefore(js, fjs);
+
+       t._e = [];
+       t.ready = function(f) {
+           t._e.push(f);
+       };
+
+       return t;
+ }(document, &quot;script&quot;, &quot;twitter-wjs&quot;));
+
+&#x767B;&#x5F55;&#x8C03;&#x7528;&#x4E0B;&#x9762;&#x7684;&#x51FD;&#x6570;
+
+  hello.init({
+      &apos;twitter&apos;: appkey,
+  });
+  hello(&apos;twitter&apos;).login().then(function (r) {
+      console.log(r);//&#x56DE;&#x8C03;
+  }, function (e) {
+      console.log(&apos;Signin error: &apos; + e.error.message);
+  });
+</code></pre>
                                 
                                 </section>
                             
@@ -1041,12 +1108,12 @@
 
             
                 
-                <a href="200304ff0c-huan-cun.html" class="navigation navigation-prev " aria-label="Previous page: 200,304，缓存">
+                <a href="wen-zhang/canvastu-pian-he-cheng.html" class="navigation navigation-prev " aria-label="Previous page: canvas图片合成">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="yu-ming-fa-san-yu-yu-ming-shou-lian.html" class="navigation navigation-next " aria-label="Next page: 域名发散与域名收敛">
+                <a href="vscodezhi-chi-es2016-es2017-yu-fa.html" class="navigation navigation-next " aria-label="Next page: vscode支持es2016 es2017语法">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1057,7 +1124,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"xss/csrf","level":"1.1.10.5","depth":3,"next":{"title":"域名发散与域名收敛","level":"1.1.10.6","depth":3,"path":"yu-ming-fa-san-yu-yu-ming-shou-lian.md","ref":"yu-ming-fa-san-yu-yu-ming-shou-lian.md","articles":[]},"previous":{"title":"200,304，缓存","level":"1.1.10.4","depth":3,"path":"200304ff0c-huan-cun.md","ref":"200304ff0c-huan-cun.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"xsscsrf.md","mtime":"2018-03-28T08:46:01.685Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-05-24T02:24:13.118Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Twitter，facebook，Pinterest等国外平台授权登录","level":"1.2.3","depth":2,"next":{"title":"vscode支持es2016 es2017语法","level":"1.2.4","depth":2,"path":"vscodezhi-chi-es2016-es2017-yu-fa.md","ref":"vscodezhi-chi-es2016-es2017-yu-fa.md","articles":[]},"previous":{"title":"canvas图片合成","level":"1.2.2","depth":2,"path":"wen-zhang/canvastu-pian-he-cheng.md","ref":"wen-zhang/canvastu-pian-he-cheng.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"twitterfacebookpinterestdeng-guo-wai-ping-tai-shou-quan-deng-lu.md","mtime":"2018-05-03T08:59:07.852Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-05-24T02:24:13.118Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
