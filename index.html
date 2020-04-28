@@ -1,145 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-  <link rel="icon" href="data:image/ico;base64,aWNv">
-  <title>土味播放器</title>
+  <title>人言者</title>
   <style>
-    .pointer {
-      cursor: pointer;
+    h1,h2,h3,h4,h5 {
+      color: #333;
     }
-
-    .short-input {
-      width: 40px;
-      text-align: center;
+    a {
+      color: #ccc;
     }
   </style>
 </head>
-
 <body>
-  <div>
-    <div style="text-align: center;">
-      <input id="searchValue" value="周杰伦" type="text" oninput="change(this,'searchValue')"
-        onkeydown="keyDown(event,this)">
-      <input id="currentPage" class="short-input" value="1" type="text" oninput="change(this,'currentPage')"
-        onkeydown="keyDown(event,this)">
-      <input id="pageSize" class="short-input" value="10" type="text" oninput="change(this,'pageSize')"
-        onkeydown="keyDown(event,this)">
-      <span class="pointer" onclick="search_btn()">搜索</span>
-    </div>
-    <div id="operation" style="visibility: hidden;">
-      <span class="pointer" onclick="changePage('reduce')">上一页</span>
-      <span id="search_type"></span>
-      <span class="pointer" onclick="changePage('add')">下一页</span>
-    </div>
-
-    <div>
-      <div id="song-list">
-      </div>
-    </div>
-
-    <div>
-      <audio controls autoplay src="">
-        您的浏览器不支持 audio 标签。
-      </audio>
-    </div>
-  </div>
-  <script>
-    var list = []
-    var searchValue = '周杰伦'
-    var currentPage = 1
-    var pageSize = 10
-    var total = 9999
-
-    var audio = document.querySelector('audio');
-    audio.onended = function () {
-      randomGet()
-    };
-
-    function keyDown(event, el) {
-      if (event.keyCode === 13) {
-        search_btn()
-      }
-    }
-
-    function change(e, type) {
-      window[type] = document.querySelector(`#${type}`).value
-    }
-
-    function search_btn() {
-      if (pageSize * (currentPage - 1) > total) {
-        alert('？？？？体育老师教的？不会算有几页吗？')
-      } else {
-        xhrFuc()
-      }
-    }
-
-    function changePage(type) {
-      if (type == 'reduce') {
-        if (currentPage == 1) {
-          return alert('还上一页个锤子？')
-        }
-        currentPage--
-      } else if (type == 'add') {
-        currentPage++
-      }
-      search_btn()
-    }
-
-    function randomGet() {
-      var random = Math.random()
-      var length = list.length
-      random = Math.floor(random * length)
-      sing(list[random].contentId)
-    }
-
-    function xhrFuc() {
-      var xhr = new XMLHttpRequest();
-      xhr.open("get", `http://pd.musicapp.migu.cn/MIGUM2.0/v1.0/content/search_all.do?&ua=Android_migu&version=5.0.1&text=${encodeURI(searchValue)}&pageNo=${currentPage}&pageSize=${pageSize}&searchSwitch={"song":1,"album":0,"singer":0,"tagSong":0,"mvSong":0,"songlist":0,"bestShow":1}`, true);
-      xhr.onreadystatechange = function () {
-        if (xhr.readyState == 4) {
-          if (xhr.status == 200) {
-            let res = JSON.parse(xhr.responseText)
-            if (res.code === '000000') {
-              list = res.songResultData.result || []
-              total = res.songResultData.totalCount
-              document.querySelector('#search_type').innerHTML = `总数量：${total}&nbsp;&nbsp;&nbsp;&nbsp;当前页数：${currentPage}&nbsp;&nbsp;&nbsp;&nbsp;每页条数：${pageSize}`
-              createNode()
-            } else {
-              alert(res.info)
-            }
-          }
-        }
-      }
-      xhr.send();
-    }
-
-    function createSingleNode(val) {
-      return `<div class="pointer" ><span>${val.singers && val.singers.length > 0 ? val.singers[0].name : ''}</span> - <span onclick="checkSong(this)" data-contentId="${val.contentId}">${val.name}</span></div>`
-    }
-    function createNode() {
-      var node = '<div>'
-      list.map(i => {
-        node += createSingleNode(i)
-      })
-      node += '</div>'
-      document.querySelector('#song-list').innerHTML = node
-      document.querySelector('#operation').style.visibility = 'visible'
-    }
-    function checkSong($event) {
-      sing($event.dataset.contentid)
-    }
-    function sing(contentId) {
-      // 无损 formatType = SQ resourceType = E
-      // 高品 formatType = HQ resourceType = 2
-      let uri = `http://app.pd.nf.migu.cn/MIGUM2.0/v1.0/content/sub/listenSong.do?toneFlag=HQ&netType=00&userId=15548614588710179085069&ua=Android_migu&version=5.1&copyrightId=0&contentId=${contentId}&resourceType=2&channel=1`
-      audio.src = uri
-    }
-  </script>
+  <h1>还在更新中~~~~~~~~~~~~~~~~~~~~~~~~~</h1>
+  <h2>github：<a href="https://github.com/CHU295">https://github.com/CHU295</a></h2>
+  <h2>掘金：<a href="https://juejin.im/user/587c79d91b69e60058416fef">https://juejin.im/user/587c79d91b69e60058416fef</a></h2>
+  <h2>segmentfault：<a href="https://segmentfault.com/u/chu295">https://segmentfault.com/u/chu295</a></h2>
+  <h1>以下项目皆在github中</h1>
+  <h1>部分项目</h1>
+  <h3>音乐播放器：<a href="http://118.25.55.180:2951/">http://118.25.55.180:2951/</a></h3>
+  <h3>流星雨：<a href="http://118.25.55.180:2952/">http://118.25.55.180:2952/</a></h3>
+  <h3>头像生成器：<a href="http://118.25.55.180:2953/">http://118.25.55.180:2953/</a></h3>
+  <h3>2048小游戏：<a href="http://118.25.55.180:2954/">http://118.25.55.180:2954/</a></h3>
+  <h3>canvas在线签名：<a href="http://118.25.55.180:2955/">http://118.25.55.180:2955/</a></h3>
+  <h3>gitbook随写：<a href="http://118.25.55.180:2956/">http://118.25.55.180:2956/</a></h3>
+  <h3>switch-tab组件示例：<a href="http://118.25.55.180:2957/">http://118.25.55.180:2957/</a></h3>
+  <h3>企鹅直播斗鱼TV直播源获取播放：<a href="http://118.25.55.180:2901/">http://118.25.55.180:2901/</a></h3>
 </body>
-
 </html>
